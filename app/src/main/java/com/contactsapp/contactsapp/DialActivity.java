@@ -1,6 +1,7 @@
 package com.contactsapp.contactsapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -97,6 +98,14 @@ public class DialActivity extends AppCompatActivity implements DialAdapter.butto
                 if(phoneNumberField.getText().toString().length() < 1 ){
                     numberToAppend = "0";
                 }else if(phoneNumberField.getText().toString().length() >= 1){
+                    if(buttons[position].equals("Cancel")){
+                        finish();
+                    }else if(buttons[position].equals("Dial")){
+                        Intent callAct = new Intent(context,CallActivity.class);
+                        callAct.putExtra("phone_number",phoneNumberField.getText().toString());
+                        startActivity(callAct);
+                    }
+
                     numberToAppend =  buttons[position];
                 }
 

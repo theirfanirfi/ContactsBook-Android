@@ -23,7 +23,7 @@
             android:name=".DialActivity"
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".CallActivity"></activity>
+        <activity android:name=".CallActivity" android:theme="@style/Theme.Design.NoActionBar"></activity>
     </application>
 
 </manifest>

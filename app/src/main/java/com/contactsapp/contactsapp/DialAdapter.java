@@ -46,14 +46,14 @@ public class DialAdapter extends BaseAdapter {
             btn.setText(numbers[position]);
         }else {
             btn.setText(numbers[position]);
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    clickListener.onClick(position);
-                }
-            });
         }
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onClick(position);
+            }
+        });
 
 
         return view;

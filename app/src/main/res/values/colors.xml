@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#fff</color>
     <color name="colorGreen">#2a5b42</color>
+    <color name="callingActivityColor">#101010</color>
 
     <!--<color name="colorPrimary">#ffffff</color>-->
     <!--<color name="primaryLightColor">#ffffff</color>-->
