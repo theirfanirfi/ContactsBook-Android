@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="RaisedButtonCancel" parent="Widget.AppCompat.Button.Colored">
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="RaisedButtonDial" parent="Widget.AppCompat.Button.Colored">
+        <item name="backgroundTint">@color/colorGreen</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
 </resources>

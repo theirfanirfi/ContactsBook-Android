@@ -16,8 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddContact" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".DialActivity" android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".AddContact"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".DialActivity"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".CallActivity"></activity>
     </application>
 
 </manifest>
