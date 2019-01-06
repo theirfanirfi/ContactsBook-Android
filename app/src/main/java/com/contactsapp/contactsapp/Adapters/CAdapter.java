@@ -17,6 +17,7 @@ public class CAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        //layout containing @TextView is inflated here - means picked in run time.
         View view = LayoutInflater.from(context).inflate(R.layout.contact_layout,parent,false);
         TextView name = view.findViewById(R.id.name);
         return view;
@@ -24,9 +25,11 @@ public class CAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
+        //here the @TextView is picked from the layout
         TextView contactName = view.findViewById(R.id.name);
         int id = cursor.getInt(0);
         String name = cursor.getString(1);
+        //and the name of the contact is retrieved from the cursor object of the database
         contactName.setText(name);
     }
 

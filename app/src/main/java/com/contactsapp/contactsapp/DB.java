@@ -42,6 +42,8 @@ public class DB extends SQLiteOpenHelper {
        // Log.i("DATABASECONTACTAPP: ","created table");
     }
 
+    //when any changes occur in the schema of the database, this upgrade method will be automatically
+    //called.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (newVersion > oldVersion) {
