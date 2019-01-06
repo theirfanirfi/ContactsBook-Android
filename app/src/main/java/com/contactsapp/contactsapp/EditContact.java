@@ -1,11 +1,12 @@
 package com.contactsapp.contactsapp;
 
 import android.content.ContentValues;
+import android.database.Cursor;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,21 +14,31 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.lang.reflect.Type;
-
-public class AddContact extends AppCompatActivity {
+public class EditContact extends AppCompatActivity {
     TextInputLayout fullnameLayout, countryCodeLayout, addressLayout,phoneLayout;
     AppCompatEditText fullname, countryCode, phoneNumber, address;
     ConstraintLayout layout;
     DB db;
+    String CONTACT_ID = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
+        CONTACT_ID = getIntent().getExtras().getString("contact_id");
         initObjects();
         events();
+        getContact();
     }
 
+
+    private void getContact(){
+        Cursor res = db.getById(Long.parseLong(CONTACT_ID));
+        res.moveToFirst();
+        fullname.setText(res.getString(1));
+        address.setText(res.getString(2));
+        phoneNumber.setText(res.getString(3));
+        countryCode.setText(res.getString(4));
+    }
     private void initObjects(){
         fullnameLayout = findViewById(R.id.fullnameLayout);
         fullname = findViewById(R.id.name);
@@ -37,7 +48,7 @@ public class AddContact extends AppCompatActivity {
         countryCode = findViewById(R.id.countrycode);
         countryCodeLayout.setCounterEnabled(true);
         countryCodeLayout.setCounterMaxLength(3);
-        getSupportActionBar().setTitle("New Contact");
+        getSupportActionBar().setTitle("Edit Contact");
 
         phoneLayout = findViewById(R.id.phoneNumberLayout);
         phoneNumber = findViewById(R.id.phoneNumber);
@@ -105,7 +116,7 @@ public class AddContact extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.save:
-                saveContact();
+                updateContact();
                 break;
             case R.id.discard:
                 break;
@@ -119,7 +130,7 @@ public class AddContact extends AppCompatActivity {
         finish();
     }
 
-    private void saveContact(){
+    private void updateContact(){
         String name = fullname.getText().toString();
         String codee = countryCode.getText().toString();
         String number = phoneNumber.getText().toString();
@@ -141,16 +152,12 @@ public class AddContact extends AppCompatActivity {
                 values.put(DB.ADDRESS,addres);
                 values.put(DB.NUMBER,number);
                 values.put(DB.COUNTRY_CODE,codee);
-                Boolean isAdded = db.addContact(values);
+                Boolean isUpdated = db.updateContact(values,CONTACT_ID);
 
-                if(isAdded){
-                    Snackbar.make(getCurrentFocus(),"Contact Added",Snackbar.LENGTH_LONG).show();
+                if(isUpdated){
+                    Snackbar.make(getCurrentFocus(),"Contact Updated",Snackbar.LENGTH_LONG).show();
                 }else {
-                    fullname.setText("");
-                    countryCode.setText("");
-                    phoneNumber.setText("");
-                    address.setText("");
-                    Snackbar.make(getCurrentFocus(),"Error occured in Adding the contact.",Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(getCurrentFocus(),"Error occured in Updating the contact.",Snackbar.LENGTH_LONG).show();
                 }
             }
         }

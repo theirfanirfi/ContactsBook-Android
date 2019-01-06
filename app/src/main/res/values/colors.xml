@@ -6,17 +6,6 @@
     <color name="colorWhite">#fff</color>
     <color name="colorGreen">#2a5b42</color>
     <color name="callingActivityColor">#101010</color>
-
-    <!--<color name="colorPrimary">#ffffff</color>-->
-    <!--<color name="primaryLightColor">#ffffff</color>-->
-    <!--<color name="colorPrimaryDark">#cccccc</color>-->
-    <!--<color name="primaryTextColor">#000000</color>-->
-    <!--<color name="colorAccent">#90caf9</color>-->
-
-    <!--<color name="colorPrimary">#90caf9</color>-->
-    <!--<color name="primaryLightColor">#c3fdff</color>-->
-    <!--<color name="colorPrimaryDark">#5d99c6</color>-->
-    <!--<color name="primaryTextColor">#000000</color>-->
-    <!--<color name="colorAccent">#1565c0</color>-->
+    <color name="colorRed">#b42c2c</color>
 
 </resources>
